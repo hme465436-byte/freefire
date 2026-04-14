@@ -10,12 +10,14 @@ import { VerificationStep } from '@/components/generator/VerificationStep';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Coins, Diamond, User, ShieldCheck } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Coins, Diamond, User, ShieldCheck, Zap, Globe, Clock } from 'lucide-react';
 import { dynamicGeneratorMessages } from '@/ai/flows/dynamic-generator-messages-flow';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { cn } from '@/lib/utils';
 
-const COIN_OPTIONS = [10000, 50000, 100000, 500000];
-const DIAMOND_OPTIONS = [500, 2000, 5000, 15000];
+const COIN_OPTIONS = [50000, 100000, 500000, 1000000];
+const DIAMOND_OPTIONS = [1000, 5000, 15000, 50000];
 
 type AppState = 'idle' | 'generating' | 'verification';
 
@@ -28,10 +30,7 @@ export default function LootForgeLandingPage() {
   const [loadingMessages, setLoadingMessages] = useState<string[]>([]);
 
   const handleGenerate = async () => {
-    if (!uid) {
-      alert('Please enter your Free Fire UID or Username');
-      return;
-    }
+    if (!uid) return;
 
     setAppState('generating');
     
@@ -60,118 +59,153 @@ export default function LootForgeLandingPage() {
   const femaleChar = PlaceHolderImages.find(img => img.id === 'character-female');
 
   return (
-    <main className="min-h-screen bg-[#05070a] relative overflow-x-hidden">
+    <main className="min-h-screen bg-[#020408] relative overflow-hidden">
       
-      {/* Global Background Layer */}
+      {/* Background Ambience */}
       <div className="fixed inset-0 z-0">
         <Image 
           src={desertBg?.imageUrl || ""} 
-          alt="Desert Background" 
+          alt="Atmospheric Background" 
           fill 
-          className="object-cover opacity-20 filter grayscale contrast-125"
+          className="object-cover opacity-30 grayscale contrast-150 scale-110"
           data-ai-hint="desert base"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#05070a]/80 to-[#05070a]" />
+        <div className="absolute inset-0 cinematic-vignette" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020408]/60 via-transparent to-[#020408]" />
+        <div className="absolute inset-0 scanline-overlay opacity-30" />
       </div>
+
+      {/* Floating Particle Glows */}
+      <div className="fixed top-1/4 -left-48 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[160px] pointer-events-none -z-10 animate-pulse" />
+      <div className="fixed bottom-1/4 -right-48 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[160px] pointer-events-none -z-10 animate-pulse" />
 
       <HeroSection />
 
-      <section className="container max-w-4xl mx-auto px-4 relative z-10 pb-24">
+      <section className="container max-w-5xl mx-auto px-4 relative z-10 pb-32">
         {appState === 'idle' && (
-          <div className="animate-fade-in grid lg:grid-cols-[1fr_350px] gap-8 items-start">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-12 items-start">
             
-            <div className="space-y-8">
-              <Card className="bg-black/60 backdrop-blur-3xl border-white/5 overflow-hidden shadow-2xl relative">
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#FFB800] to-transparent" />
-                <CardContent className="p-8 md:p-12 space-y-12">
+            <div className="space-y-10">
+              {/* Badges Bar */}
+              <div className="flex flex-wrap gap-4 animate-fade-in">
+                <Badge className="bg-primary/20 text-primary border-primary/30 h-8 px-4 font-black italic uppercase tracking-wider gap-2 glass-card">
+                  <Zap className="w-3 h-3 fill-current" /> Instant Delivery
+                </Badge>
+                <Badge className="bg-secondary/20 text-secondary border-secondary/30 h-8 px-4 font-black italic uppercase tracking-wider gap-2 glass-card">
+                  <Globe className="w-3 h-3" /> Global Servers Active
+                </Badge>
+                <Badge className="bg-accent/20 text-accent border-accent/30 h-8 px-4 font-black italic uppercase tracking-wider gap-2 glass-card">
+                  <Clock className="w-3 h-3" /> Limited Time Event
+                </Badge>
+              </div>
+
+              <Card className="glass-card border-white/10 overflow-hidden shadow-2xl relative group metallic-shine rounded-xl">
+                {/* Metallic Top Accent */}
+                <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80" />
+                
+                <CardContent className="p-10 md:p-14 space-y-14">
                   
                   {/* UID Section */}
-                  <div className="space-y-5">
+                  <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <User className="w-5 h-5 text-[#FFB800]" />
-                        <span className="text-sm font-black italic uppercase tracking-[0.3em] text-white/80">Account Identification</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center">
+                            <User className="w-5 h-5 text-primary" />
+                        </div>
+                        <span className="text-xs font-black italic uppercase tracking-[0.4em] text-white/50">Player Authentication</span>
                       </div>
-                      <ShieldCheck className="w-5 h-5 text-green-500" />
+                      <div className="flex items-center gap-2 text-green-500 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
+                        <ShieldCheck className="w-4 h-4" />
+                        <span className="text-[10px] font-black uppercase tracking-widest">SECURE</span>
+                      </div>
                     </div>
-                    <div className="relative group">
+                    <div className="relative">
                       <Input
                         value={uid}
                         onChange={(e) => setUid(e.target.value)}
-                        placeholder="ENTER FREE FIRE ID / USERNAME"
-                        className="h-16 bg-white/5 border-2 border-white/10 focus:border-[#FFB800] transition-all rounded-md pl-14 text-xl font-black italic uppercase placeholder:text-white/20 text-white"
+                        placeholder="ENTER PLAYER UID / USERNAME"
+                        className="h-20 bg-black/40 border-2 border-white/5 focus:border-primary/50 transition-all rounded-lg pl-8 text-2xl font-black italic uppercase placeholder:text-white/10 text-white tracking-widest shadow-inner"
                       />
-                      <div className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-[#FFB800] transition-colors">
-                        <User className="w-6 h-6" />
-                      </div>
                     </div>
                   </div>
 
-                  {/* Platform Section */}
-                  <div className="space-y-5">
-                    <span className="text-sm font-black italic uppercase tracking-[0.3em] text-white/80 flex items-center gap-2">
-                      Target System
-                    </span>
+                  {/* Platform Selection */}
+                  <div className="space-y-6">
+                    <span className="text-xs font-black italic uppercase tracking-[0.4em] text-white/50 block">Select Target System</span>
                     <PlatformToggle value={platform} onChange={setPlatform} />
                   </div>
 
                   {/* Resource Selectors */}
-                  <div className="grid md:grid-cols-2 gap-10">
+                  <div className="grid md:grid-cols-2 gap-12">
                     <ResourceSelector
                       label="Coins"
-                      icon={<Coins className="w-5 h-5 text-[#FFB800]" />}
+                      icon={<Coins className="w-6 h-6 text-primary" />}
                       options={COIN_OPTIONS}
                       value={coins}
                       onChange={setCoins}
-                      accentColorClass="#FFB800"
+                      accentColor="hsl(var(--primary))"
                     />
                     <ResourceSelector
                       label="Diamonds"
-                      icon={<Diamond className="w-5 h-5 text-secondary" />}
+                      icon={<Diamond className="w-6 h-6 text-secondary" />}
                       options={DIAMOND_OPTIONS}
                       value={diamonds}
                       onChange={setDiamonds}
-                      accentColorClass="#00E5FF"
+                      accentColor="hsl(var(--secondary))"
                     />
                   </div>
 
-                  {/* Generate Button */}
-                  <div className="pt-8">
+                  {/* Action Button */}
+                  <div className="pt-6">
                     <Button
+                      disabled={!uid}
                       onClick={handleGenerate}
-                      className="w-full h-20 text-3xl font-black italic uppercase tracking-[0.2em] bg-[#FFB800] hover:bg-[#FFB800]/90 text-black shadow-[0_0_30px_rgba(255,184,0,0.4)] transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98] rounded-md"
+                      className={cn(
+                        "w-full h-24 text-3xl font-black italic uppercase tracking-[0.3em] transition-all duration-500 rounded-lg metallic-shine",
+                        uid 
+                          ? "bg-primary hover:bg-primary/90 text-black shadow-[0_0_50px_rgba(255,184,0,0.4)] scale-[1.02] hover:scale-[1.04]" 
+                          : "bg-white/5 text-white/20 border border-white/5"
+                      )}
                     >
-                      GENERATE NOW
+                      {uid ? 'INITIATE TRANSFER' : 'INPUT PLAYER ID'}
                     </Button>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Footer Links */}
-              <div className="text-center text-white/20 text-[10px] font-black italic tracking-[0.2em] space-y-4 max-w-2xl mx-auto uppercase">
-                  <p>LOOTFORGE PRO IS A SECURE UTILITY. WE ARE NOT AFFILIATED WITH GARENA INTERNATIONAL. REWARDS ARE PROCESSED VIA ENCRYPTED SERVER HANDSHAKES.</p>
-                  <div className="flex justify-center gap-8">
-                      <span className="hover:text-[#FFB800] cursor-pointer transition-colors underline decoration-white/10">TERMS</span>
-                      <span className="hover:text-[#FFB800] cursor-pointer transition-colors underline decoration-white/10">PRIVACY</span>
-                      <span className="hover:text-[#FFB800] cursor-pointer transition-colors underline decoration-white/10">SUPPORT</span>
+              {/* Security Footer */}
+              <div className="text-center space-y-6 opacity-30 hover:opacity-100 transition-opacity duration-500">
+                  <p className="text-[10px] font-black italic tracking-[0.3em] uppercase max-w-2xl mx-auto leading-relaxed">
+                    LOOTFORGE PRO VERSION 4.8.1 • RSA-4096 ENCRYPTION ACTIVE • DIRECT DATABASE INJECTION PROTOCOL • ALL REWARDS SUBJECT TO TERMS OF SERVICE
+                  </p>
+                  <div className="flex justify-center gap-12 text-[10px] font-black uppercase tracking-widest">
+                      <span className="cursor-pointer hover:text-primary transition-colors">Server Status: Online</span>
+                      <span className="cursor-pointer hover:text-primary transition-colors">API: Connected</span>
+                      <span className="cursor-pointer hover:text-primary transition-colors">Users: 1.2M+</span>
                   </div>
               </div>
             </div>
 
-            {/* Side Character Art */}
-            <div className="hidden lg:block sticky top-24">
-                <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+            {/* Sidebar Visual Art */}
+            <div className="hidden lg:block sticky top-32 animate-fade-in">
+                <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden glass-card border-white/10 shadow-2xl group animate-float">
                     <Image 
                         src={femaleChar?.imageUrl || ""} 
                         alt="Character Art" 
                         fill 
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover group-hover:scale-110 transition-transform duration-[2s] contrast-125 brightness-75"
                         data-ai-hint="gaming girl"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#05070a] via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/40 backdrop-blur-md rounded border border-white/10">
-                        <p className="text-xs font-black italic uppercase tracking-[0.2em] text-[#FFB800]">Global Distribution</p>
-                        <p className="text-lg font-black italic uppercase text-white">REWARDS ACTIVE</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020408] via-transparent to-transparent" />
+                    
+                    {/* Floating Info Overlay */}
+                    <div className="absolute bottom-8 left-8 right-8 p-6 glass-card rounded-xl border-white/20">
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                            <p className="text-[10px] font-black italic uppercase tracking-[0.2em] text-primary">Live Distribution</p>
+                        </div>
+                        <p className="text-xl font-black italic uppercase text-white tracking-tighter">REWARDS ACTIVE</p>
+                        <p className="text-[10px] text-white/40 font-bold uppercase mt-1">Garena Global Cluster ID: #FF-9021</p>
                     </div>
                 </div>
             </div>
@@ -180,7 +214,7 @@ export default function LootForgeLandingPage() {
         )}
 
         {appState === 'generating' && (
-          <div className="py-12">
+          <div className="py-12 animate-fade-in">
             <LoadingSimulation 
               messages={loadingMessages} 
               onComplete={() => setAppState('verification')} 
@@ -189,15 +223,11 @@ export default function LootForgeLandingPage() {
         )}
 
         {appState === 'verification' && (
-          <div className="py-12">
+          <div className="py-12 animate-fade-in">
             <VerificationStep />
           </div>
         )}
       </section>
-
-      {/* Atmospheric Glows */}
-      <div className="fixed top-1/2 -left-48 w-[600px] h-[600px] bg-[#FFB800]/5 rounded-full blur-[150px] pointer-events-none -z-10" />
-      <div className="fixed bottom-0 -right-48 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px] pointer-events-none -z-10" />
     </main>
   );
 }

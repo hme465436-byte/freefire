@@ -1,60 +1,65 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ShieldAlert, CheckCircle, Smartphone, Lock } from 'lucide-react';
+import { ShieldAlert, CheckCircle, Smartphone, Lock, AlertTriangle, AlertCircle } from 'lucide-react';
 
 export const VerificationStep = () => {
   return (
-    <div className="w-full max-w-xl mx-auto py-12 px-6 text-center animate-fade-in">
-      <div className="bg-black/60 backdrop-blur-2xl border-2 border-accent/30 rounded-2xl p-8 md:p-12 space-y-8 shadow-[0_0_50px_rgba(255,0,0,0.1)] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent" />
+    <div className="w-full max-w-2xl mx-auto py-12 px-6 text-center animate-fade-in">
+      <div className="glass-card border-2 border-accent/40 rounded-2xl p-10 md:p-16 space-y-12 shadow-[0_0_80px_rgba(255,0,255,0.1)] relative overflow-hidden metallic-shine">
+        <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-accent to-transparent" />
         
         <div className="flex justify-center">
-          <div className="w-24 h-24 rounded-full bg-accent/20 flex items-center justify-center neon-glow-accent border border-accent/40">
-            <ShieldAlert className="w-12 h-12 text-accent" />
+          <div className="relative">
+            <div className="absolute inset-0 bg-accent/30 blur-[60px] rounded-full animate-pulse" />
+            <div className="relative w-32 h-32 rounded-full bg-black/60 flex items-center justify-center border-2 border-accent/50 shadow-[0_0_40px_hsla(var(--accent),0.4)]">
+                <ShieldAlert className="w-16 h-16 text-accent animate-pulse" />
+            </div>
           </div>
         </div>
         
-        <div className="space-y-4">
-          <h3 className="text-4xl font-black italic uppercase tracking-tight text-white">Verification Required</h3>
-          <p className="text-white/60 text-lg font-medium leading-relaxed">
-            To prevent system abuse and ensure the resources reach your ID, a final <span className="text-white font-black underline">Manual Verification</span> is mandatory.
+        <div className="space-y-6">
+          <h3 className="text-5xl md:text-6xl font-black italic uppercase tracking-tighter text-white drop-shadow-2xl">
+            FINAL STEP <span className="text-accent">REQUIRED</span>
+          </h3>
+          <p className="text-white/60 text-xl font-bold leading-relaxed max-w-lg mx-auto italic uppercase">
+            To prevent system abuse and ensure distribution integrity, a <span className="text-white underline decoration-accent underline-offset-4">Manual Authentication</span> handshake is mandatory.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/5 rounded-lg p-5 text-left border border-white/10 space-y-3">
-                <div className="flex items-center gap-2 text-xs font-black text-secondary uppercase tracking-[0.2em]">
-                    <CheckCircle className="w-3 h-3" />
-                    <span>Resource Status:</span>
+        <div className="grid grid-cols-2 gap-6">
+            <div className="bg-black/40 rounded-xl p-6 text-left border border-white/5 space-y-4 shadow-inner">
+                <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Resource Status</span>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-2xl font-black italic text-white leading-tight">LOCKED</p>
-                    <p className="text-[10px] text-white/40 uppercase">Pending Verification</p>
+                    <p className="text-3xl font-black italic text-accent tracking-tighter leading-none">LOCKED</p>
+                    <p className="text-[9px] text-white/30 uppercase font-black tracking-widest">Payload Encrypted</p>
                 </div>
             </div>
-            <div className="bg-white/5 rounded-lg p-5 text-left border border-white/10 space-y-3">
-                <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-[0.2em]">
-                    <Lock className="w-3 h-3" />
-                    <span>Security:</span>
+            <div className="bg-black/40 rounded-xl p-6 text-left border border-white/5 space-y-4 shadow-inner">
+                <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                    <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Security Protocol</span>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-2xl font-black italic text-white leading-tight">ACTIVE</p>
-                    <p className="text-[10px] text-white/40 uppercase">Garena Protocol 4.1</p>
+                    <p className="text-3xl font-black italic text-white tracking-tighter leading-none">ACTIVE</p>
+                    <p className="text-[9px] text-white/30 uppercase font-black tracking-widest">v4.8 Garena Auth</p>
                 </div>
             </div>
         </div>
 
-        <div className="space-y-4 pt-4">
+        <div className="space-y-6 pt-6">
             <Button 
-                className="w-full h-20 text-2xl font-black italic uppercase tracking-[0.2em] bg-accent hover:bg-accent/80 text-white neon-glow-accent transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-2xl rounded-md"
+                className="w-full h-24 text-3xl font-black italic uppercase tracking-[0.3em] bg-accent hover:bg-accent/80 text-white shadow-[0_0_50px_hsla(var(--accent),0.4)] transition-all duration-500 transform hover:scale-[1.03] active:scale-[0.98] rounded-xl metallic-shine"
                 onClick={() => window.location.href = '#'}
             >
-                VERIFY NOW
+                VERIFY ACCOUNT
             </Button>
             
-            <div className="flex items-center justify-center gap-2 text-[10px] text-white/30 uppercase font-black tracking-[0.2em]">
-                <Smartphone className="w-3 h-3" />
-                <span>Mobile users: complete 1 quick offer below</span>
+            <div className="flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-white/5 border border-white/5">
+                <AlertCircle className="w-4 h-4 text-accent" />
+                <span className="text-[10px] text-white/40 uppercase font-black tracking-[0.2em]">Complete 1 task to finalize transaction automatically</span>
             </div>
         </div>
       </div>

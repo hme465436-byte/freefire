@@ -7,7 +7,7 @@ interface ResourceSelectorProps {
   options: number[];
   value: number;
   onChange: (val: number) => void;
-  accentColorClass: string;
+  accentColor: string;
 }
 
 export const ResourceSelector = ({ 
@@ -16,32 +16,34 @@ export const ResourceSelector = ({
   options, 
   value, 
   onChange, 
-  accentColorClass 
+  accentColor 
 }: ResourceSelectorProps) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <div className="p-2 bg-black/40 rounded border border-white/10">
+        <div className="p-2.5 bg-white/5 rounded-lg border border-white/10 shadow-inner">
             {icon}
         </div>
-        <span className="text-sm font-black italic uppercase tracking-widest text-white/80">Select {label}</span>
+        <span className="text-xs font-black italic uppercase tracking-[0.3em] text-white/60">Select {label}</span>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-4">
         {options.map((opt) => (
           <button
             key={opt}
             onClick={() => onChange(opt)}
             className={cn(
-              "relative overflow-hidden py-4 px-4 rounded border-2 text-lg font-black italic transition-all duration-300 text-center",
+              "relative overflow-hidden py-6 px-4 rounded-xl border-2 text-2xl font-black italic transition-all duration-300 text-center glass-card",
               value === opt 
-                ? `bg-white/5 border-current text-white ring-1 ring-current shadow-[0_0_15px_rgba(255,255,255,0.1)]` 
-                : "bg-black/40 border-white/5 text-white/30 hover:border-white/20 hover:bg-black/60"
+                ? "border-current text-white scale-[1.05] shadow-[0_0_30px_rgba(255,255,255,0.1)] metallic-shine" 
+                : "border-white/5 text-white/20 hover:border-white/20 hover:text-white/40"
             )}
-            style={value === opt ? { color: accentColorClass } : {}}
+            style={value === opt ? { color: accentColor, borderColor: accentColor } : {}}
           >
             {opt.toLocaleString()}
             {value === opt && (
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-current" />
+              <div 
+                className="absolute bottom-0 left-0 w-full h-1 bg-current shadow-[0_-4px_10px_current]"
+              />
             )}
           </button>
         ))}

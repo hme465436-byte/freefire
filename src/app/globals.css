@@ -4,49 +4,26 @@
 
 @layer base {
   :root {
-    --background: 210 10% 4%;
+    --background: 220 20% 2%;
     --foreground: 210 20% 98%;
-    --card: 210 10% 6%;
+    --card: 220 20% 4%;
     --card-foreground: 210 20% 98%;
-    --popover: 210 10% 5%;
+    --popover: 220 20% 3%;
     --popover-foreground: 210 20% 98%;
-    --primary: 36 93% 53%; /* FF Yellow/Orange */
-    --primary-foreground: 210 20% 98%;
-    --secondary: 189 94% 53%;
-    --secondary-foreground: 210 10% 4%;
-    --muted: 210 10% 15%;
+    --primary: 43 100% 50%; /* Vibrant Gold */
+    --primary-foreground: 220 20% 2%;
+    --secondary: 185 100% 50%; /* Neon Cyan */
+    --secondary-foreground: 220 20% 2%;
+    --muted: 220 15% 10%;
     --muted-foreground: 215 20% 65%;
-    --accent: 0 84% 60%; /* FF Red */
+    --accent: 320 100% 60%; /* Neon Purple */
     --accent-foreground: 210 20% 98%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 20% 98%;
-    --border: 210 10% 12%;
-    --input: 210 10% 12%;
-    --ring: 36 93% 53%;
-    --radius: 0.5rem;
-    --neon-orange: 36 93% 53%;
-  }
-
-  .dark {
-    --background: 210 10% 4%;
-    --foreground: 210 20% 98%;
-    --card: 210 10% 6%;
-    --card-foreground: 210 20% 98%;
-    --popover: 210 10% 5%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 36 93% 53%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 189 94% 53%;
-    --secondary-foreground: 210 10% 4%;
-    --muted: 210 10% 15%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 0 84% 60%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 210 10% 12%;
-    --input: 210 10% 12%;
-    --ring: 36 93% 53%;
+    --border: 220 15% 15%;
+    --input: 220 15% 12%;
+    --ring: 43 100% 50%;
+    --radius: 0.75rem;
   }
 }
 
@@ -56,48 +33,80 @@
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-color: #05070a;
+    background-color: #020408;
   }
 }
 
+/* Typography & Logo */
 .ff-logo-text {
   font-family: 'Inter', sans-serif;
   font-weight: 900;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   font-style: italic;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+  filter: drop-shadow(0 0 20px rgba(255, 184, 0, 0.4));
 }
 
-.neon-glow-primary {
-  box-shadow: 0 0 15px hsla(var(--primary), 0.4), 0 0 30px hsla(var(--primary), 0.2);
+/* Glass-morphism & Metallic effects */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.neon-glow-accent {
-  box-shadow: 0 0 15px hsla(var(--accent), 0.4), 0 0 30px hsla(var(--accent), 0.2);
+.metallic-shine {
+  position: relative;
+  overflow: hidden;
 }
 
-.neon-text-primary {
-  text-shadow: 0 0 12px hsla(var(--primary), 0.7);
+.metallic-shine::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
+  animation: shine 6s infinite linear;
+  pointer-events: none;
 }
 
-.neon-text-white {
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+@keyframes shine {
+  0% { transform: translate(-30%, -30%); }
+  100% { transform: translate(30%, 30%); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px hsla(var(--primary), 0.5)); }
-  50% { opacity: 0.8; filter: drop-shadow(0 0 15px hsla(var(--primary), 0.8)); }
+/* Neon Glows */
+.neon-glow-gold {
+  box-shadow: 0 0 20px hsla(var(--primary), 0.3), 0 0 40px hsla(var(--primary), 0.1);
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s infinite ease-in-out;
+.neon-glow-cyan {
+  box-shadow: 0 0 20px hsla(var(--secondary), 0.3), 0 0 40px hsla(var(--secondary), 0.1);
+}
+
+.neon-text-gold {
+  text-shadow: 0 0 15px hsla(var(--primary), 0.6);
+}
+
+.neon-text-cyan {
+  text-shadow: 0 0 15px hsla(var(--secondary), 0.6);
 }
 
 .cinematic-vignette {
-  background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%);
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.9) 100%);
 }
 
-.distressed-bg {
-  mask-image: linear-gradient(to bottom, black, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+.scanline-overlay {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }

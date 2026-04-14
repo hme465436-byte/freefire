@@ -2,26 +2,26 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Epic Free Fire character with parachute",
-      "imageUrl": "https://picsum.photos/seed/ff-parachute/1920/1080",
+      "description": "High-quality Free Fire parachute jump scene",
+      "imageUrl": "https://picsum.photos/seed/ff-para-hq/1920/1080",
       "imageHint": "parachute jump"
     },
     {
       "id": "desert-bg",
-      "description": "Free Fire desert base view",
-      "imageUrl": "https://picsum.photos/seed/ff-desert/1920/1080",
+      "description": "Epic Free Fire desert base overview",
+      "imageUrl": "https://picsum.photos/seed/ff-desert-base/1920/1080",
       "imageHint": "desert base"
     },
     {
       "id": "character-female",
-      "description": "Free Fire female character with weapon",
-      "imageUrl": "https://picsum.photos/seed/ff-girl/800/1200",
+      "description": "Free Fire premium female character art",
+      "imageUrl": "https://picsum.photos/seed/ff-character-art/800/1200",
       "imageHint": "gaming girl"
     },
     {
       "id": "island-bg",
-      "description": "Tropical island game view",
-      "imageUrl": "https://picsum.photos/seed/ff-island/1920/1080",
+      "description": "Tropical island game view high fidelity",
+      "imageUrl": "https://picsum.photos/seed/ff-island-hq/1920/1080",
       "imageHint": "tropical island"
     }
   ]
