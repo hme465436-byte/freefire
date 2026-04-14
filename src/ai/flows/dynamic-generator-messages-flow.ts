@@ -61,7 +61,23 @@ const dynamicGeneratorMessagesFlow = ai.defineFlow(
     outputSchema: DynamicGeneratorMessagesOutputSchema,
   },
   async input => {
-    const {output} = await dynamicGeneratorMessagesPrompt(input);
-    return output!;
+    try {
+      const {output} = await dynamicGeneratorMessagesPrompt(input);
+      return output!;
+    } catch (error) {
+      // Return a set of realistic fallback messages if the AI service fails (e.g. API not enabled)
+      return {
+        messages: [
+          "Establishing secure handshake with Garena servers...",
+          "Bypassing firewall protocols...",
+          `Player ${input.freeFireUid} identified on ${input.platform.toUpperCase()} cluster...`,
+          "Validating resource request authorization...",
+          `Batching ${input.coins.toLocaleString()} Coins for delivery...`,
+          `Batching ${input.diamonds.toLocaleString()} Diamonds for delivery...`,
+          "Injecting resource packets into game database...",
+          "Finalizing transaction sequence..."
+        ]
+      };
+    }
   }
 );
