@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "GeneratorRequest": {
+      "title": "Generator Request",
+      "description": "A request to generate in-game resources.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The Free Fire UID or Username."
+        },
+        "platform": {
+          "type": "string",
+          "enum": ["android", "ios"],
+          "description": "The device platform."
+        },
+        "coins": {
+          "type": "number",
+          "description": "Amount of coins requested."
+        },
+        "diamonds": {
+          "type": "number",
+          "description": "Amount of diamonds requested."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "processing", "completed", "failed"],
+          "description": "The current status of the request."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the request was created."
+        }
+      },
+      "required": ["uid", "platform", "coins", "diamonds", "status", "createdAt"]
+    }
+  },
+  "auth": {
+    "providers": ["anonymous"]
+  },
+  "firestore": {
+    "/generatorRequests/{requestId}": {
+      "schema": {
+        "$ref": "#/entities/GeneratorRequest"
+      },
+      "description": "Collection of resource generation requests."
+    }
+  }
+}
