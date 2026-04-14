@@ -81,21 +81,21 @@ export default function LootForgeLandingPage() {
 
       <HeroSection />
 
-      <section className="container max-w-5xl mx-auto px-4 relative z-10 pb-32">
+      <section className="container max-w-5xl mx-auto px-4 relative z-10 pb-16 md:pb-32">
         {appState === 'idle' && (
-          <div className="grid lg:grid-cols-[1fr_380px] gap-12 items-start">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-8 md:gap-12 items-start">
             
-            <div className="space-y-10">
+            <div className="space-y-6 md:space-y-10">
               {/* Badges Bar */}
-              <div className="flex flex-wrap gap-4 animate-fade-in">
-                <Badge className="bg-primary/20 text-primary border-primary/30 h-8 px-4 font-black italic uppercase tracking-wider gap-2 glass-card">
+              <div className="flex flex-wrap gap-2 md:gap-4 animate-fade-in">
+                <Badge className="bg-primary/20 text-primary border-primary/30 h-7 md:h-8 px-3 md:px-4 text-[9px] md:text-xs font-black italic uppercase tracking-wider gap-2 glass-card">
                   <Zap className="w-3 h-3 fill-current" /> Instant Delivery
                 </Badge>
-                <Badge className="bg-secondary/20 text-secondary border-secondary/30 h-8 px-4 font-black italic uppercase tracking-wider gap-2 glass-card">
-                  <Globe className="w-3 h-3" /> Global Servers Active
+                <Badge className="bg-secondary/20 text-secondary border-secondary/30 h-7 md:h-8 px-3 md:px-4 text-[9px] md:text-xs font-black italic uppercase tracking-wider gap-2 glass-card">
+                  <Globe className="w-3 h-3" /> Global Servers
                 </Badge>
-                <Badge className="bg-accent/20 text-accent border-accent/30 h-8 px-4 font-black italic uppercase tracking-wider gap-2 glass-card">
-                  <Clock className="w-3 h-3" /> Limited Time Event
+                <Badge className="bg-accent/20 text-accent border-accent/30 h-7 md:h-8 px-3 md:px-4 text-[9px] md:text-xs font-black italic uppercase tracking-wider gap-2 glass-card">
+                  <Clock className="w-3 h-3" /> Limited Event
                 </Badge>
               </div>
 
@@ -103,43 +103,43 @@ export default function LootForgeLandingPage() {
                 {/* Metallic Top Accent */}
                 <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80" />
                 
-                <CardContent className="p-10 md:p-14 space-y-14">
+                <CardContent className="p-6 md:p-14 space-y-8 md:space-y-14">
                   
                   {/* UID Section */}
-                  <div className="space-y-6">
+                  <div className="space-y-4 md:space-y-6">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center">
-                            <User className="w-5 h-5 text-primary" />
+                      <div className="flex items-center gap-2 md:gap-3">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center">
+                            <User className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                         </div>
-                        <span className="text-xs font-black italic uppercase tracking-[0.4em] text-white/50">Player Authentication</span>
+                        <span className="text-[10px] font-black italic uppercase tracking-[0.3em] text-white/50">Player Auth</span>
                       </div>
-                      <div className="flex items-center gap-2 text-green-500 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
-                        <ShieldCheck className="w-4 h-4" />
-                        <span className="text-[10px] font-black uppercase tracking-widest">SECURE</span>
+                      <div className="flex items-center gap-1.5 text-green-500 bg-green-500/10 px-2.5 py-1 rounded-full border border-green-500/20">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        <span className="text-[9px] font-black uppercase tracking-widest">SECURE</span>
                       </div>
                     </div>
                     <div className="relative">
                       <Input
                         value={uid}
                         onChange={(e) => setUid(e.target.value)}
-                        placeholder="ENTER PLAYER UID / USERNAME"
-                        className="h-20 bg-black/40 border-2 border-white/5 focus:border-primary/50 transition-all rounded-lg pl-8 text-2xl font-black italic uppercase placeholder:text-white/10 text-white tracking-widest shadow-inner"
+                        placeholder="ENTER PLAYER UID"
+                        className="h-14 md:h-20 bg-black/40 border-2 border-white/5 focus:border-primary/50 transition-all rounded-lg pl-6 md:pl-8 text-lg md:text-2xl font-black italic uppercase placeholder:text-white/10 text-white tracking-widest shadow-inner"
                       />
                     </div>
                   </div>
 
                   {/* Platform Selection */}
-                  <div className="space-y-6">
-                    <span className="text-xs font-black italic uppercase tracking-[0.4em] text-white/50 block">Select Target System</span>
+                  <div className="space-y-4 md:space-y-6">
+                    <span className="text-[10px] font-black italic uppercase tracking-[0.3em] text-white/50 block">Target System</span>
                     <PlatformToggle value={platform} onChange={setPlatform} />
                   </div>
 
                   {/* Resource Selectors */}
-                  <div className="grid md:grid-cols-2 gap-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                     <ResourceSelector
                       label="Coins"
-                      icon={<Coins className="w-6 h-6 text-primary" />}
+                      icon={<Coins className="w-5 h-5 md:w-6 md:h-6 text-primary" />}
                       options={COIN_OPTIONS}
                       value={coins}
                       onChange={setCoins}
@@ -147,7 +147,7 @@ export default function LootForgeLandingPage() {
                     />
                     <ResourceSelector
                       label="Diamonds"
-                      icon={<Diamond className="w-6 h-6 text-secondary" />}
+                      icon={<Diamond className="w-5 h-5 md:w-6 md:h-6 text-secondary" />}
                       options={DIAMOND_OPTIONS}
                       value={diamonds}
                       onChange={setDiamonds}
@@ -156,14 +156,14 @@ export default function LootForgeLandingPage() {
                   </div>
 
                   {/* Action Button */}
-                  <div className="pt-6">
+                  <div className="pt-2 md:pt-6">
                     <Button
                       disabled={!uid}
                       onClick={handleGenerate}
                       className={cn(
-                        "w-full h-24 text-3xl font-black italic uppercase tracking-[0.3em] transition-all duration-500 rounded-lg metallic-shine",
+                        "w-full h-16 md:h-24 text-xl md:text-3xl font-black italic uppercase tracking-[0.2em] md:tracking-[0.3em] transition-all duration-500 rounded-lg metallic-shine",
                         uid 
-                          ? "bg-primary hover:bg-primary/90 text-black shadow-[0_0_50px_rgba(255,184,0,0.4)] scale-[1.02] hover:scale-[1.04]" 
+                          ? "bg-primary hover:bg-primary/90 text-black shadow-[0_0_50px_rgba(255,184,0,0.4)] scale-[1.01] hover:scale-[1.02]" 
                           : "bg-white/5 text-white/20 border border-white/5"
                       )}
                     >
@@ -174,14 +174,13 @@ export default function LootForgeLandingPage() {
               </Card>
 
               {/* Security Footer */}
-              <div className="text-center space-y-6 opacity-30 hover:opacity-100 transition-opacity duration-500">
-                  <p className="text-[10px] font-black italic tracking-[0.3em] uppercase max-w-2xl mx-auto leading-relaxed">
+              <div className="text-center space-y-4 opacity-30 hover:opacity-100 transition-opacity duration-500">
+                  <p className="text-[8px] md:text-[10px] font-black italic tracking-[0.2em] md:tracking-[0.3em] uppercase max-w-2xl mx-auto leading-relaxed px-4">
                     LOOTFORGE PRO VERSION 4.8.1 • RSA-4096 ENCRYPTION ACTIVE • DIRECT DATABASE INJECTION PROTOCOL • ALL REWARDS SUBJECT TO TERMS OF SERVICE
                   </p>
-                  <div className="flex justify-center gap-12 text-[10px] font-black uppercase tracking-widest">
+                  <div className="flex justify-center gap-6 md:gap-12 text-[8px] md:text-[10px] font-black uppercase tracking-widest">
                       <span className="cursor-pointer hover:text-primary transition-colors">Server Status: Online</span>
                       <span className="cursor-pointer hover:text-primary transition-colors">API: Connected</span>
-                      <span className="cursor-pointer hover:text-primary transition-colors">Users: 1.2M+</span>
                   </div>
               </div>
             </div>
@@ -214,7 +213,7 @@ export default function LootForgeLandingPage() {
         )}
 
         {appState === 'generating' && (
-          <div className="py-12 animate-fade-in">
+          <div className="py-8 md:py-12 animate-fade-in">
             <LoadingSimulation 
               messages={loadingMessages} 
               onComplete={() => setAppState('verification')} 
@@ -223,7 +222,7 @@ export default function LootForgeLandingPage() {
         )}
 
         {appState === 'verification' && (
-          <div className="py-12 animate-fade-in">
+          <div className="py-8 md:py-12 animate-fade-in">
             <VerificationStep />
           </div>
         )}
