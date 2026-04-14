@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-character",
+      "description": "Epic Free Fire character portrait",
+      "imageUrl": "https://picsum.photos/seed/ff-hero/1200/800",
+      "imageHint": "free fire gaming"
+    },
+    {
+      "id": "ff-logo",
+      "description": "Free Fire game logo",
+      "imageUrl": "https://picsum.photos/seed/ff-logo/400/200",
+      "imageHint": "game logo"
+    },
+    {
+      "id": "coin-icon",
+      "description": "Shiny game coins stack",
+      "imageUrl": "https://picsum.photos/seed/coin/100/100",
+      "imageHint": "gold coins"
+    },
+    {
+      "id": "diamond-icon",
+      "description": "Blue game diamond icon",
+      "imageUrl": "https://picsum.photos/seed/diamond/100/100",
+      "imageHint": "blue gem"
+    }
+  ]
 }
