@@ -43,7 +43,7 @@
   font-weight: 900;
   letter-spacing: -0.04em;
   font-style: italic;
-  filter: drop-shadow(0 0 20px rgba(255, 184, 0, 0.4));
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
 }
 
 /* Glass-morphism & Metallic effects */
@@ -109,4 +109,10 @@
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+/* Layout Smoothing */
+main section {
+  position: relative;
+  z-index: 10;
 }
