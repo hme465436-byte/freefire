@@ -1,28 +1,28 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-character",
-      "description": "Epic Free Fire character portrait",
-      "imageUrl": "https://picsum.photos/seed/ff-hero/1200/800",
-      "imageHint": "free fire gaming"
+      "id": "hero-bg",
+      "description": "Epic Free Fire character with parachute",
+      "imageUrl": "https://picsum.photos/seed/ff-parachute/1920/1080",
+      "imageHint": "parachute jump"
     },
     {
-      "id": "ff-logo",
-      "description": "Free Fire game logo",
-      "imageUrl": "https://picsum.photos/seed/ff-logo/400/200",
-      "imageHint": "game logo"
+      "id": "desert-bg",
+      "description": "Free Fire desert base view",
+      "imageUrl": "https://picsum.photos/seed/ff-desert/1920/1080",
+      "imageHint": "desert base"
     },
     {
-      "id": "coin-icon",
-      "description": "Shiny game coins stack",
-      "imageUrl": "https://picsum.photos/seed/coin/100/100",
-      "imageHint": "gold coins"
+      "id": "character-female",
+      "description": "Free Fire female character with weapon",
+      "imageUrl": "https://picsum.photos/seed/ff-girl/800/1200",
+      "imageHint": "gaming girl"
     },
     {
-      "id": "diamond-icon",
-      "description": "Blue game diamond icon",
-      "imageUrl": "https://picsum.photos/seed/diamond/100/100",
-      "imageHint": "blue gem"
+      "id": "island-bg",
+      "description": "Tropical island game view",
+      "imageUrl": "https://picsum.photos/seed/ff-island/1920/1080",
+      "imageHint": "tropical island"
     }
   ]
 }
