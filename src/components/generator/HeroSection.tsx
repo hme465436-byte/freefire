@@ -4,8 +4,9 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const FFLogo = () => (
   <div className="flex flex-col items-center animate-fade-in">
-    <div className="relative flex items-center justify-center ff-logo-text text-4xl sm:text-7xl md:text-[10rem] text-white select-none italic leading-none">
-      <span className="tracking-tighter metallic-shine drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">FREE FIRE</span>
+    <div className="relative flex items-center justify-center ff-logo-text text-4xl sm:text-7xl md:text-[10rem] select-none italic leading-none">
+      <span className="tracking-tighter text-white metallic-shine drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">FREE</span>
+      <span className="tracking-tighter text-primary metallic-shine ml-3 sm:ml-5 md:ml-10 neon-text-gold">FIRE</span>
     </div>
     {/* Underline Glow */}
     <div className="w-full max-w-5xl h-[2px] md:h-[4px] bg-gradient-to-r from-transparent via-primary to-transparent mt-2 md:mt-6 shadow-[0_0_30px_hsla(var(--primary),0.8)] opacity-80" />
