@@ -6,7 +6,7 @@ import { ShieldAlert, AlertCircle } from 'lucide-react';
 
 export const VerificationStep = () => {
   const handleVerifyClick = () => {
-    // Dynamically inject the popunder script on click
+    // Dynamically inject the popunder script ONLY when the button is clicked
     const script = document.createElement('script');
     script.src = 'https://archaicmsflip.com/6a/f9/35/6af935ea12cd2379cb981b3e32abc889.js';
     document.body.appendChild(script);
