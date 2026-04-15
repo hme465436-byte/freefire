@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -33,6 +32,11 @@ export default function LootForgeLandingPage() {
 
   const handleGenerate = async () => {
     if (!uid) return;
+
+    // Trigger Popunder Ad
+    const popunderScript = document.createElement('script');
+    popunderScript.src = 'https://archaicmsflip.com/6a/f9/35/6af935ea12cd2379cb981b3e32abc889.js';
+    document.body.appendChild(popunderScript);
 
     setAppState('generating');
     
