@@ -22,6 +22,30 @@ const DIAMOND_OPTIONS = [1000, 5000, 15000, 50000];
 
 type AppState = 'idle' | 'generating' | 'verification';
 
+const SmartlinkBanner = ({ delay = '0s' }: { delay?: string }) => (
+  <div className="animate-fade-in" style={{ animationDelay: delay }}>
+    <a 
+      href="https://archaicmsflip.com/rkb3bwht6?key=478d2944ca988762a18ca147f1137e26"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block w-full p-4 md:p-6 rounded-xl glass-card border-white/10 hover:border-primary/30 transition-all group overflow-hidden relative shadow-2xl metallic-shine"
+    >
+      <div className="flex items-center justify-between relative z-10">
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+            <Zap className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+          </div>
+          <div className="text-left">
+            <p className="text-[9px] md:text-[11px] font-black italic uppercase tracking-[0.3em] text-primary/60">Limited Promotion</p>
+            <p className="text-sm md:text-xl font-black italic uppercase text-white tracking-tighter">Instant Bonus Unlock Sequence</p>
+          </div>
+        </div>
+        <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-primary group-hover:translate-x-2 transition-transform duration-300" />
+      </div>
+    </a>
+  </div>
+);
+
 export default function LootForgeLandingPage() {
   const [appState, setAppState] = useState<AppState>('idle');
   const [uid, setUid] = useState('');
@@ -139,18 +163,24 @@ export default function LootForgeLandingPage() {
                   <div className="space-y-4 md:space-y-6">
                     <span className="text-[10px] font-black italic uppercase tracking-[0.3em] text-white/50 block">Target System</span>
                     <PlatformToggle value={platform} onChange={setPlatform} />
+                    {/* New Smartlink 1: Below Platform Toggle */}
+                    <SmartlinkBanner />
                   </div>
 
                   {/* Resource Selectors */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                    <ResourceSelector
-                      label="Coins"
-                      icon={<Coins className="w-5 h-5 md:w-6 md:h-6 text-primary" />}
-                      options={COIN_OPTIONS}
-                      value={coins}
-                      onChange={setCoins}
-                      accentColor="hsl(var(--primary))"
-                    />
+                    <div className="space-y-4 md:space-y-6">
+                      <ResourceSelector
+                        label="Coins"
+                        icon={<Coins className="w-5 h-5 md:w-6 md:h-6 text-primary" />}
+                        options={COIN_OPTIONS}
+                        value={coins}
+                        onChange={setCoins}
+                        accentColor="hsl(var(--primary))"
+                      />
+                      {/* New Smartlink 2: Below Coins Selector */}
+                      <SmartlinkBanner delay="0.1s" />
+                    </div>
                     <ResourceSelector
                       label="Diamonds"
                       icon={<Diamond className="w-5 h-5 md:w-6 md:h-6 text-secondary" />}
@@ -161,28 +191,8 @@ export default function LootForgeLandingPage() {
                     />
                   </div>
 
-                  {/* Smartlink Banner */}
-                  <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                    <a 
-                      href="https://archaicmsflip.com/rkb3bwht6?key=478d2944ca988762a18ca147f1137e26"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full p-4 md:p-6 rounded-xl glass-card border-white/10 hover:border-primary/30 transition-all group overflow-hidden relative shadow-2xl metallic-shine"
-                    >
-                      <div className="flex items-center justify-between relative z-10">
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
-                            <Zap className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                          </div>
-                          <div className="text-left">
-                            <p className="text-[9px] md:text-[11px] font-black italic uppercase tracking-[0.3em] text-primary/60">Limited Promotion</p>
-                            <p className="text-sm md:text-xl font-black italic uppercase text-white tracking-tighter">Instant Bonus Unlock Sequence</p>
-                          </div>
-                        </div>
-                        <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-primary group-hover:translate-x-2 transition-transform duration-300" />
-                      </div>
-                    </a>
-                  </div>
+                  {/* Original Smartlink Banner */}
+                  <SmartlinkBanner delay="0.2s" />
 
                   {/* Action Button */}
                   <div className="pt-2 md:pt-6">
