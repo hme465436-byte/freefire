@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Script from 'next/script';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const FFLogo = () => (
@@ -37,10 +38,22 @@ export const HeroSection = () => {
       <div className="relative z-10 flex flex-col items-center space-y-6 md:space-y-16 max-w-6xl mx-auto text-center">
         <FFLogo />
 
-        <div className="space-y-3 md:space-y-8">
+        <div className="space-y-3 md:space-y-8 w-full max-w-4xl">
             <h2 className="text-2xl md:text-8xl font-black italic uppercase tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
                 GET FREE <span className="text-primary neon-text-gold">DIAMONDS & COINS</span>
             </h2>
+
+            {/* Native Banner Container */}
+            <div className="flex justify-center w-full min-h-[50px] my-4 md:my-8 overflow-hidden rounded-lg">
+              <div id="container-970bd940133e4c2b1ee9000827be332e" className="w-full"></div>
+              <Script 
+                src="https://archaicmsflip.com/970bd940133e4c2b1ee9000827be332e/invoke.js"
+                strategy="afterInteractive"
+                async={true}
+                data-cfasync="false"
+              />
+            </div>
+
             <div className="flex items-center justify-center gap-3 md:gap-6">
                 <div className="h-[1px] w-6 md:w-16 bg-white/20" />
                 <p className="text-[8px] md:text-xl font-black text-white/40 tracking-[0.3em] md:tracking-[0.6em] uppercase italic">
