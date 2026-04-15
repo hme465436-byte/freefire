@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -11,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Coins, Diamond, User, ShieldCheck, Zap, Globe, Clock } from 'lucide-react';
+import { Coins, Diamond, User, ShieldCheck, Zap, Globe, Clock, ArrowRight } from 'lucide-react';
 import { dynamicGeneratorMessages } from '@/ai/flows/dynamic-generator-messages-flow';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
@@ -155,6 +156,29 @@ export default function LootForgeLandingPage() {
                     />
                   </div>
 
+                  {/* Smartlink Banner */}
+                  <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                    <a 
+                      href="https://archaicmsflip.com/rkb3bwht6?key=478d2944ca988762a18ca147f1137e26"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full p-4 md:p-6 rounded-xl glass-card border-white/10 hover:border-primary/30 transition-all group overflow-hidden relative shadow-2xl metallic-shine"
+                    >
+                      <div className="flex items-center justify-between relative z-10">
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+                            <Zap className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                          </div>
+                          <div className="text-left">
+                            <p className="text-[9px] md:text-[11px] font-black italic uppercase tracking-[0.3em] text-primary/60">Limited Promotion</p>
+                            <p className="text-sm md:text-xl font-black italic uppercase text-white tracking-tighter">Instant Bonus Unlock Sequence</p>
+                          </div>
+                        </div>
+                        <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-primary group-hover:translate-x-2 transition-transform duration-300" />
+                      </div>
+                    </a>
+                  </div>
+
                   {/* Action Button */}
                   <div className="pt-2 md:pt-6">
                     <Button
@@ -230,3 +254,4 @@ export default function LootForgeLandingPage() {
     </main>
   );
 }
+
