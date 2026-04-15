@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Script from 'next/script';
 import { HeroSection } from '@/components/generator/HeroSection';
 import { PlatformToggle } from '@/components/generator/PlatformToggle';
 import { ResourceSelector } from '@/components/generator/ResourceSelector';
@@ -82,7 +83,7 @@ export default function LootForgeLandingPage() {
 
       <HeroSection />
 
-      <section className="container max-w-5xl mx-auto px-4 relative z-10 pb-16 md:pb-32">
+      <section className="container max-w-5xl mx-auto px-4 relative z-10 pb-24 md:pb-40">
         {appState === 'idle' && (
           <div className="grid lg:grid-cols-[1fr_380px] gap-8 md:gap-12 items-start">
             
@@ -251,7 +252,12 @@ export default function LootForgeLandingPage() {
           </div>
         )}
       </section>
+
+      {/* Social Bar Script */}
+      <Script 
+        src="https://archaicmsflip.com/c5/49/02/c54902bbd9bb986821fc5a4b1b03134d.js"
+        strategy="afterInteractive"
+      />
     </main>
   );
 }
-
